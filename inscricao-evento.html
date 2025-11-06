@@ -28,6 +28,11 @@
         color: var(--tone-light);
         font-family: "Work Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
+        transition: overflow 0.2s ease;
+      }
+
+      body.modal-open {
+        overflow: hidden;
       }
 
       .evento-page {
@@ -726,11 +731,17 @@
         cursor: pointer;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
         text-decoration: none;
+        background-position: center;
       }
 
       .evento-price-cta:hover {
         transform: translateY(-3px);
         box-shadow: 0 28px 60px rgba(225, 67, 6, 0.45);
+      }
+
+      .evento-price-cta:focus-visible {
+        outline: 3px solid rgba(var(--tone-light-rgb), 0.8);
+        outline-offset: 4px;
       }
 
       .evento-price-progress {
@@ -764,6 +775,163 @@
         font-size: clamp(14px, 0.9vw + 11px, 20px);
         font-weight: 500;
         color: rgba(var(--tone-light-rgb), 0.82);
+      }
+
+      .evento-modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        place-items: center;
+        background: rgba(0, 0, 0, 0.65);
+        backdrop-filter: blur(6px);
+        z-index: 999;
+        padding: clamp(28px, 6vw, 64px);
+      }
+
+      .evento-modal.is-visible {
+        display: grid;
+      }
+
+      .evento-modal__panel {
+        position: relative;
+        width: min(560px, 100%);
+        background: linear-gradient(160deg, rgba(225, 67, 6, 0.12) 0%, rgba(10, 10, 10, 0.94) 55%, rgba(0, 0, 0, 0.96) 100%);
+        border-radius: clamp(20px, 3vw, 28px);
+        padding: clamp(32px, 5vw, 56px);
+        color: var(--tone-light);
+        border: 1px solid rgba(225, 67, 6, 0.32);
+        box-shadow: 0 32px 80px rgba(225, 67, 6, 0.28);
+      }
+
+      .evento-modal__title {
+        font-size: clamp(22px, 2vw + 18px, 34px);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: clamp(20px, 4vw, 28px);
+        color: #e14306;
+      }
+
+      .evento-modal__close {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 1px solid rgba(225, 67, 6, 0.45);
+        background: rgba(0, 0, 0, 0.35);
+        color: var(--tone-light);
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        font-size: 18px;
+        transition: background 0.2s ease, border 0.2s ease;
+      }
+
+      .evento-modal__close:hover {
+        background: rgba(225, 67, 6, 0.16);
+        border-color: rgba(225, 67, 6, 0.65);
+      }
+
+      .evento-form {
+        display: grid;
+        gap: clamp(16px, 3vw, 20px);
+      }
+
+      .evento-field {
+        display: grid;
+        gap: 8px;
+      }
+
+      .evento-field label {
+        font-size: clamp(14px, 0.8vw + 12px, 18px);
+        letter-spacing: 0.04em;
+      }
+
+      .evento-input,
+      .evento-input input {
+        font-family: inherit;
+      }
+
+      .evento-input input {
+        width: 100%;
+        padding: clamp(12px, 2vw, 16px);
+        border-radius: 12px;
+        border: 1px solid rgba(var(--tone-light-rgb), 0.15);
+        background: rgba(0, 0, 0, 0.35);
+        color: var(--tone-light);
+        font-size: clamp(15px, 0.9vw + 13px, 20px);
+        transition: border 0.2s ease, background 0.2s ease;
+      }
+
+      .evento-input input::placeholder {
+        color: rgba(var(--tone-light-rgb), 0.5);
+      }
+
+      .evento-input input:focus-visible {
+        outline: none;
+        border-color: rgba(225, 67, 6, 0.6);
+        background: rgba(0, 0, 0, 0.45);
+      }
+
+      .evento-input--phone {
+        display: grid;
+        grid-template-columns: auto auto 1fr;
+        align-items: center;
+        gap: clamp(10px, 2vw, 16px);
+        padding: clamp(10px, 1.8vw, 14px);
+        border-radius: 12px;
+        border: 1px solid rgba(var(--tone-light-rgb), 0.18);
+        background: rgba(0, 0, 0, 0.35);
+      }
+
+      .evento-input--phone input {
+        border: none;
+        padding: 0;
+        background: transparent;
+      }
+
+      .evento-input--phone input:focus-visible {
+        border: none;
+      }
+
+      .evento-phone-flag {
+        width: clamp(32px, 3vw, 36px);
+        height: clamp(22px, 2.4vw, 26px);
+      }
+
+      .evento-phone-ddi {
+        font-size: clamp(15px, 1vw + 12px, 18px);
+        color: var(--tone-light);
+        letter-spacing: 0.04em;
+      }
+
+      .evento-form__submit {
+        margin-top: clamp(10px, 2vw, 16px);
+        border: none;
+        border-radius: 999px;
+        padding: clamp(14px, 2vw, 18px);
+        font-size: clamp(15px, 1vw + 14px, 22px);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        background: linear-gradient(110deg, rgba(var(--tone-light-rgb), 0.92), rgba(225, 67, 6, 0.92));
+        color: #0b0b0b;
+        cursor: pointer;
+        box-shadow: 0 20px 45px rgba(225, 67, 6, 0.32);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .evento-form__submit:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 26px 60px rgba(225, 67, 6, 0.38);
+      }
+
+      .evento-form__submit:disabled {
+        opacity: 0.6;
+        cursor: progress;
+        transform: none;
+        box-shadow: none;
       }
 
       @media (max-width: 768px) {
@@ -988,6 +1156,35 @@
         }
       }
     </style>
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+      fbq("init", "763867839648504");
+      fbq("track", "PageView");
+    </script>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=763867839648504&amp;ev=PageView&amp;noscript=1"
+        alt=""
+      />
+    </noscript>
   </head>
   <body>
     <main class="evento-page">
@@ -1040,7 +1237,7 @@
             99% dos imóveis são entregues com algum defeito oculto pela construtora
           </h2>
           <p class="evento-insight__subtitle">
-            No dia 22/11 às 09h00, ao vivo no Zoom, vou mostrar como executar uma vistoria na prática e transformar esse serviço em mais de R$ 15 mil de faturamento.
+            No dia <strong>22/11 às 09h00</strong>, ao vivo no Zoom, vou mostrar como executar uma vistoria na prática e transformar esse serviço em mais de R$ 15 mil de faturamento.
           </p>
           <img src="images/zoom.png" alt="Transmissão ao vivo no Zoom" class="evento-insight__logo" />
         </div>
@@ -1126,14 +1323,9 @@
             <p class="evento-price-installments">ou 2x de R$ 8,95</p>
           </div>
           <div class="evento-price-cta-wrapper">
-            <a
-              class="evento-price-cta"
-              href="https://pay.hotmart.com/T102703456B?checkoutMode=10"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <button class="evento-price-cta" type="button" data-modal-open="lead">
               garantir minha vaga
-            </a>
+            </button>
           </div>
           <div class="evento-price-progress">
             <div class="evento-progress-bar">
@@ -1143,6 +1335,61 @@
           </div>
         </article>
       </section>
+      <div class="evento-modal" id="leadModal" aria-hidden="true">
+        <div class="evento-modal__panel" role="dialog" aria-modal="true" aria-labelledby="leadModalTitle">
+          <button class="evento-modal__close" type="button" data-modal-close aria-label="Fechar modal">
+            ×
+          </button>
+          <h3 class="evento-modal__title" id="leadModalTitle">Preencha os dados abaixo para assegurar sua vaga</h3>
+          <form class="evento-form" id="leadForm">
+            <div class="evento-field">
+              <label for="leadName">Seu nome</label>
+              <div class="evento-input">
+                <input type="text" id="leadName" name="nome" placeholder="Digite seu nome completo" autocomplete="name" required />
+              </div>
+            </div>
+            <div class="evento-field">
+              <label for="leadEmail">Seu e-mail</label>
+              <div class="evento-input">
+                <input type="email" id="leadEmail" name="email" placeholder="Digite seu melhor e-mail" autocomplete="email" required />
+              </div>
+            </div>
+            <div class="evento-field">
+              <label for="leadPhone">Seu WhatsApp</label>
+              <div class="evento-input evento-input--phone">
+                <span class="evento-phone-flag" aria-hidden="true">
+                  <svg
+                    width="100%"
+                    height="100%"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path fill="#73AF00" d="M473.655 88.275H38.345C17.167 88.275 0 105.442 0 126.62V385.38c0 21.177 17.167 38.345 38.345 38.345h435.31c21.177 0 38.345-17.167 38.345-38.345V126.62c0-21.178-17.167-38.345-38.345-38.345z"/>
+                    <path fill="#FFE15A" d="M251.41 135.207L65.354 248.458c-5.651 3.439-5.651 11.641 0 15.081L251.41 376.792c2.819 1.716 6.36 1.716 9.18 0l186.056-113.252c5.651-3.439 5.651-11.641 0-15.081L260.59 135.207c-2.819-1.715-6.361-1.715-9.18 0z"/>
+                    <circle fill="#41479B" cx="256" cy="255.999" r="70.62"/>
+                    <path
+                      fill="#F5F5F5"
+                      d="M195.4 219.872c-3.332 5.578-5.905 11.64-7.605 18.077 39.149-2.946 97.062 8.006 133.922 43.773 2.406-6.141 3.995-12.683 4.59-19.522-38.06-22.033-90.679-33.424-130.907-32.328zM258.925 280.099l1.88 5.638 5.943.046c.769.006 1.088.988.469 1.445l-4.781 3.531 1.793 5.666c.232.734-.604 1.341-1.229.893l-4.835-3.456-4.835 3.456c-.626.447-1.461-.159-1.229-.893l1.793-5.666-4.781-3.531c-.619-.457-.3-1.439.469-1.445l5.943-.046 1.88-5.638c.264-.731 1.297-.731 1.563 0z"
+                    />
+                  </svg>
+                </span>
+                <span class="evento-phone-ddi">+55</span>
+                <input
+                  type="tel"
+                  id="leadPhone"
+                  name="whatsapp"
+                  placeholder="DDD + número"
+                  inputmode="tel"
+                  autocomplete="tel"
+                  required
+                />
+              </div>
+            </div>
+            <button class="evento-form__submit" type="submit">assegurar minha vaga</button>
+          </form>
+        </div>
+      </div>
       <section class="evento-faq-section">
         <div class="evento-faq-container">
           <div class="evento-faq-heading">
@@ -1218,8 +1465,97 @@
       </footer>
     </main>
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const faqItems = document.querySelectorAll(".evento-faq-item");
+    document.addEventListener("DOMContentLoaded", () => {
+      const hotmartUrl = "https://pay.hotmart.com/T102703456B?checkoutMode=10";
+      const webhookUrl = "https://n8n-hook.aluanalara.com.br/webhook/camila-inscricao";
+
+      const modal = document.getElementById("leadModal");
+      const leadForm = document.getElementById("leadForm");
+      const openModalTrigger = document.querySelector('[data-modal-open="lead"]');
+      const modalCloseTriggers = modal ? modal.querySelectorAll("[data-modal-close]") : [];
+      const submitButton = leadForm ? leadForm.querySelector(".evento-form__submit") : null;
+
+      const setModalVisibility = (visible) => {
+        if (!modal) return;
+        modal.setAttribute("aria-hidden", visible ? "false" : "true");
+        modal.classList.toggle("is-visible", visible);
+        document.body.classList.toggle("modal-open", visible);
+        if (!visible && leadForm) {
+          leadForm.reset();
+        }
+      };
+
+      const openModal = () => {
+        if (!modal) return;
+        setModalVisibility(true);
+        const firstInput = modal.querySelector("#leadName");
+        requestAnimationFrame(() => firstInput && firstInput.focus());
+      };
+
+      const closeModal = () => {
+        setModalVisibility(false);
+      };
+
+      openModalTrigger?.addEventListener("click", openModal);
+
+      modalCloseTriggers.forEach((trigger) =>
+        trigger.addEventListener("click", closeModal)
+      );
+
+      modal?.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
+
+      leadForm?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (!submitButton) return;
+
+        const formData = new FormData(leadForm);
+        const nome = (formData.get("nome") || "").toString().trim();
+        const email = (formData.get("email") || "").toString().trim();
+        const rawPhone = (formData.get("whatsapp") || "").toString();
+        let phoneDigits = rawPhone.replace(/\D/g, "");
+        if (phoneDigits.startsWith("55")) {
+          phoneDigits = phoneDigits.slice(2);
+        }
+        const whatsapp = `+55${phoneDigits}`;
+
+        if (!nome || !email || phoneDigits.length < 10) {
+          alert("Por favor, preencha todos os campos corretamente.");
+          return;
+        }
+
+        const payload = {
+          nome,
+          email,
+          whatsapp,
+        };
+
+        const originalLabel = submitButton.textContent;
+        submitButton.disabled = true;
+        submitButton.textContent = "Enviando...";
+
+        try {
+          await fetch(webhookUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          });
+        } catch (error) {
+          console.error("Erro ao enviar dados para o webhook", error);
+        } finally {
+          submitButton.textContent = originalLabel;
+          submitButton.disabled = false;
+          closeModal();
+          window.location.href = hotmartUrl;
+        }
+      });
+
+      const faqItems = document.querySelectorAll(".evento-faq-item");
 
         faqItems.forEach((item) => {
           const toggle = item.querySelector(".evento-faq-toggle");
