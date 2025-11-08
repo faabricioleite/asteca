@@ -777,6 +777,54 @@
         color: rgba(var(--tone-light-rgb), 0.82);
       }
 
+      .evento-about-section {
+        width: 100%;
+        padding: clamp(64px, 12vw, 140px) clamp(24px, 7vw, 160px);
+      }
+
+      .evento-about__grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+        gap: clamp(32px, 6vw, 72px);
+        align-items: center;
+      }
+
+      .evento-about__image-wrapper {
+        position: relative;
+        border-radius: 0;
+        overflow: visible;
+        box-shadow: none;
+      }
+
+      .evento-about__image {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .evento-about__content {
+        display: grid;
+        gap: clamp(18px, 3vw, 28px);
+      }
+
+      .evento-about__title {
+        font-size: clamp(26px, 2vw + 24px, 48px);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--tone-light);
+      }
+
+      .evento-about__text {
+        font-size: clamp(16px, 1vw + 14px, 24px);
+        line-height: 1.7;
+        color: rgba(var(--tone-light-rgb), 0.82);
+      }
+
+      .evento-about__text strong {
+        color: var(--tone-light);
+      }
+
       .evento-modal {
         position: fixed;
         inset: 0;
@@ -957,6 +1005,14 @@
 
         .evento-price-progress {
           gap: clamp(10px, 5vw, 16px);
+        }
+
+        .evento-about__grid {
+          grid-template-columns: 1fr;
+        }
+
+        .evento-about-section {
+          padding: clamp(48px, 20vw, 110px) clamp(18px, 9vw, 56px);
         }
       }
 
@@ -1390,6 +1446,26 @@
           </form>
         </div>
       </div>
+      <section class="evento-about-section">
+        <div class="evento-about__grid">
+          <div class="evento-about__image-wrapper">
+            <img
+              src="images/camila-expert-aula.png"
+              alt="Camila Carvalho, engenheira civil especializada em vistorias de imóveis"
+              class="evento-about__image"
+            />
+          </div>
+          <div class="evento-about__content">
+            <h2 class="evento-about__title">Olá, eu sou a Camila!</h2>
+            <p class="evento-about__text">
+              Sou casada, mãe de um casalzinho lindo e atuo há <strong>mais de 17 anos</strong> com Engenharia Civil. Nesse tempo todo acompanhei de perto o quanto uma entrega de chaves ou uma reforma mal conduzida pode virar um pesadelo, seja pelo orçamento estourado, pelas falhas de execução ou pelos vícios de construção que aparecem quando já é tarde demais.
+            </p>
+            <p class="evento-about__text">
+              Hoje, meu propósito é ajudar você — engenheiro, arquiteto ou comprador de imóveis — a se proteger, entregar laudos impecáveis e transformar vistorias em um serviço premium, reconhecido e bem pago. Quero que você tenha a tranquilidade de dormir sabendo que protegeu o imóvel, evitou prejuízos e valorizou o seu trabalho.
+            </p>
+          </div>
+        </div>
+      </section>
       <section class="evento-faq-section">
         <div class="evento-faq-container">
           <div class="evento-faq-heading">
