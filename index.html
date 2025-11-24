@@ -1,255 +1,1831 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camila Carvalho - Links</title>
-    <link rel="icon" type="image/png" href="images/logo-astec.png">
-    <link rel="shortcut icon" type="image/png" href="images/logo-astec.png">
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1924462888294240');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1924462888294240&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&family=Playfair+Display:wght@700&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formação Prática em Vistoria - Inscrição</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --tone-light: #f1ddbd;
+      --tone-light-rgb: 241, 221, 189;
+    }
 
-        body {
-            font-family: 'Quicksand', sans-serif !important;
-        }
-        
-        .subtitle, .intro-text, .about-text p {
-             font-family: 'Quicksand', sans-serif;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .about-text h2 {
-            font-family: 'Playfair Display', serif !important;
-            font-size: 48px !important;
-            line-height: 1.3 !important;
-            font-weight: 700;
-            background: linear-gradient(145deg, #C99A30, #FEF1A2);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: #C99A30;
-        }
+    body {
+      background-color: #000;
+      color: var(--tone-light);
+      font-family: "Work Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      transition: overflow 0.2s ease;
+    }
 
-        .arrow-container {
-            background: linear-gradient(145deg, #C99A30, #FEF1A2);
-        }
+    body.modal-open {
+      overflow: hidden;
+    }
 
-        .arrow-container svg {
-            width: 28px;
-            height: 28px;
-        }
+    .evento-page {
+      min-height: 100vh;
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(24px, 4vw, 60px);
+      padding-bottom: clamp(96px, 12vw, 180px);
+    }
 
-        .arrow-container svg path {
-            fill: white;
-        }
-    </style>
+    .evento-hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 48px clamp(24px, 5vw, 80px) clamp(120px, 15vh, 200px);
+      overflow: hidden;
+    }
+
+    .evento-hero__video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+      filter: brightness(0.72);
+    }
+
+    .evento-hero__topbar {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(12px, 2vw, 24px);
+      font-size: clamp(14px, 1.3vw + 6px, 24px);
+      letter-spacing: 0.2em;
+      flex-wrap: nowrap;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--tone-light);
+    }
+
+    .evento-hero__divider {
+      flex: 1;
+      height: 1px;
+      background: rgba(var(--tone-light-rgb), 0.4);
+      max-width: 280px;
+    }
+
+    .evento-hero__label,
+    .evento-hero__datetime {
+      white-space: nowrap;
+    }
+
+    .evento-hero__content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-top: clamp(220px, 28vw, 420px);
+    }
+
+    .evento-hero__logo {
+      display: block;
+      width: min(420px, 70vw);
+      height: auto;
+      filter: drop-shadow(0 32px 60px rgba(0, 0, 0, 0.5));
+    }
+
+    .evento-hero__tagline {
+      position: relative;
+      z-index: 1;
+      margin-top: 0;
+      text-align: center;
+      font-size: clamp(24px, 1.5vw + 32px, 40px);
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--tone-light);
+      max-width: min(720px, 88vw);
+      margin-inline: auto;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .evento-hero__subtitle {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      font-size: clamp(15px, 1vw + 12px, 22px);
+      font-weight: 400;
+      line-height: 1.45;
+      color: rgba(var(--tone-light-rgb), 0.92);
+      max-width: min(680px, 86vw);
+      margin-inline: auto;
+      letter-spacing: 0.02em;
+      margin-top: clamp(16px, 2vw, 32px);
+    }
+
+    @media (max-width: 768px) {
+      .evento-hero {
+        padding: 36px 24px 120px;
+        min-height: 100vh;
+        background-position: center top;
+      }
+
+      .evento-hero__video {
+        object-position: center top;
+      }
+
+      .evento-hero__content {
+        margin-top: clamp(200px, 30vw, 380px);
+      }
+
+      .evento-hero__topbar {
+        gap: 12px;
+        letter-spacing: 0.14em;
+        font-size: 16px;
+      }
+
+      .evento-hero__divider {
+        width: min(120px, 20vw);
+        max-width: 120px;
+      }
+
+      .evento-hero__logo {
+        width: min(360px, 85vw);
+      }
+
+      .evento-hero__tagline {
+        font-size: clamp(28px, 4.2vw, 36px);
+        letter-spacing: 0.06em;
+        margin-top: 0;
+      }
+
+      .evento-hero__subtitle {
+        font-size: clamp(15px, 2.3vw, 20px);
+        letter-spacing: 0.018em;
+        margin-top: clamp(14px, 3vw, 28px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .evento-hero {
+        padding: 32px 20px 96px;
+      }
+
+      .evento-hero__video {
+        object-position: center top;
+      }
+
+      .evento-hero__content {
+        margin-top: clamp(180px, 38vw, 360px);
+      }
+
+      .evento-hero__topbar {
+        font-size: 13px;
+        letter-spacing: 0.12em;
+        gap: 10px;
+      }
+
+      .evento-hero__divider {
+        width: min(100px, 30vw);
+      }
+
+      .evento-hero__logo {
+        width: min(320px, 90vw);
+      }
+
+      .evento-hero__tagline {
+        font-size: clamp(26px, 6vw, 34px);
+        letter-spacing: 0.05em;
+        line-height: 1.45;
+        margin-top: 0;
+      }
+
+      .evento-hero__subtitle {
+        font-size: 15px;
+        letter-spacing: 0.015em;
+        line-height: 1.5;
+        margin-top: clamp(12px, 4vw, 24px);
+      }
+    }
+
+    .evento-card-section {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 0 clamp(24px, 6vw, 160px) clamp(32px, 5vw, 80px);
+    }
+
+    .evento-card {
+      width: min(820px, 100%);
+      border: 1.5px solid #e14306;
+      border-radius: 32px;
+      padding: clamp(36px, 5vw, 64px) clamp(32px, 6vw, 72px);
+      background: radial-gradient(circle at top, rgba(225, 67, 6, 0.1), transparent 55%),
+        rgba(10, 10, 10, 0.92);
+      box-shadow: 0 32px 80px rgba(225, 67, 6, 0.18);
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: clamp(12px, 2vw, 24px);
+    }
+
+    .evento-card__title {
+      font-size: clamp(20px, 1.5vw + 18px, 34px);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #e14306;
+    }
+
+    .evento-card__primary {
+      font-size: clamp(18px, 1.2vw + 16px, 28px);
+      font-weight: 600;
+      color: var(--tone-light);
+      letter-spacing: 0.03em;
+    }
+
+    .evento-card__secondary {
+      font-size: clamp(15px, 0.8vw + 12px, 20px);
+      font-weight: 400;
+      color: rgba(var(--tone-light-rgb), 0.78);
+      letter-spacing: 0.015em;
+      max-width: 520px;
+      margin-bottom: clamp(12px, 2.5vw, 24px);
+    }
+
+    .evento-card__divider {
+      width: clamp(140px, 30vw, 360px);
+      height: 1px;
+      background: #e14306;
+      opacity: 0.92;
+    }
+
+    .evento-card__secondary+.evento-card__divider {
+      margin-top: clamp(6px, 1.5vw, 14px);
+    }
+
+    .evento-learn-section {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 0 clamp(24px, 6vw, 160px);
+      margin-top: clamp(16px, 4vw, 48px);
+    }
+
+    .evento-learn-card {
+      width: min(860px, 100%);
+      border: 1.5px solid rgba(225, 67, 6, 0.55);
+      border-radius: 32px;
+      padding: clamp(38px, 5.5vw, 68px) clamp(34px, 7vw, 80px);
+      background: linear-gradient(160deg, rgba(225, 67, 6, 0.14) 0%, rgba(15, 15, 15, 0.92) 38%, rgba(0, 0, 0, 0.9) 100%);
+      box-shadow: 0 28px 76px rgba(225, 67, 6, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: clamp(24px, 4vw, 40px);
+      position: relative;
+      z-index: 1;
+    }
+
+    .evento-learn-title {
+      font-size: clamp(20px, 1.5vw + 18px, 34px);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #e14306;
+      text-align: center;
+    }
+
+    .evento-learn-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: clamp(18px, 3vw, 32px);
+    }
+
+    .evento-learn-item {
+      display: flex;
+      align-items: flex-start;
+      gap: clamp(14px, 2vw, 22px);
+      padding: clamp(12px, 1.6vw, 20px) clamp(16px, 2vw, 26px);
+      border-radius: 18px;
+      background: rgba(var(--tone-light-rgb), 0.02);
+      border: 1px solid rgba(225, 67, 6, 0.14);
+    }
+
+    .evento-learn-icon {
+      flex: 0 0 clamp(28px, 2.4vw, 36px);
+      width: clamp(28px, 2.4vw, 36px);
+      height: clamp(28px, 2.4vw, 36px);
+      display: grid;
+      place-items: center;
+    }
+
+    .evento-learn-icon svg {
+      width: clamp(24px, 2vw, 30px);
+      height: clamp(24px, 2vw, 30px);
+      display: block;
+    }
+
+    .evento-learn-text {
+      font-size: clamp(16px, 0.9vw + 13px, 22px);
+      font-weight: 500;
+      color: rgba(var(--tone-light-rgb), 0.88);
+      line-height: 1.45;
+    }
+
+    @media (max-width: 768px) {
+      .evento-card-section {
+        padding: 0 clamp(20px, 7vw, 48px) clamp(80px, 18vw, 140px);
+      }
+
+      .evento-card {
+        border-radius: 24px;
+        padding: clamp(32px, 8vw, 56px) clamp(24px, 8vw, 52px);
+        gap: clamp(10px, 3vw, 20px);
+      }
+
+      .evento-card__primary {
+        letter-spacing: 0.025em;
+      }
+
+      .evento-card__secondary {
+        letter-spacing: 0.012em;
+        margin-bottom: clamp(10px, 3vw, 20px);
+      }
+
+      .evento-learn-card {
+        border-radius: 26px;
+        padding: clamp(32px, 8vw, 60px) clamp(24px, 7.5vw, 60px);
+        gap: clamp(22px, 6vw, 36px);
+      }
+
+      .evento-learn-list {
+        grid-template-columns: 1fr;
+      }
+
+      .evento-learn-item {
+        gap: clamp(12px, 3vw, 18px);
+      }
+    }
+
+    .evento-insight {
+      position: relative;
+      overflow: visible;
+      padding: clamp(48px, 8vw, 96px) clamp(24px, 7vw, 160px);
+      display: flex;
+      justify-content: center;
+    }
+
+    .evento-insight__glow {
+      position: absolute;
+      width: clamp(440px, 60vw, 900px);
+      height: clamp(440px, 60vw, 900px);
+      background: radial-gradient(circle at 30% 30%, rgba(225, 67, 6, 0.7) 0%, rgba(225, 67, 6, 0.5) 30%, rgba(225, 67, 6, 0.04) 78%);
+      filter: blur(180px);
+      opacity: 0.85;
+      animation: glowDrift 12s ease-in-out infinite alternate;
+      will-change: transform;
+      transform-origin: center;
+    }
+
+    .evento-insight__content {
+      position: relative;
+      z-index: 1;
+      max-width: min(780px, 92vw);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: clamp(16px, 2.2vw, 28px);
+    }
+
+    .evento-insight__title {
+      font-size: clamp(24px, 2.2vw + 24px, 44px);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: 0.04em;
+      color: var(--tone-light);
+    }
+
+    .evento-insight__subtitle {
+      font-size: clamp(16px, 1.1vw + 14px, 24px);
+      font-weight: 400;
+      line-height: 1.6;
+      color: rgba(var(--tone-light-rgb), 0.85);
+      max-width: min(620px, 92vw);
+    }
+
+    .evento-insight__logo {
+      width: clamp(140px, 16vw, 220px);
+      height: auto;
+    }
+
+    @keyframes glowDrift {
+      0% {
+        transform: translate(-18%, -18%) scale(1.05) rotate(0deg);
+      }
+
+      40% {
+        transform: translate(12%, 6%) scale(1.12) rotate(12deg);
+      }
+
+      70% {
+        transform: translate(-6%, 18%) scale(0.98) rotate(-8deg);
+      }
+
+      100% {
+        transform: translate(16%, 28%) scale(1.08) rotate(6deg);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .evento-insight {
+        padding: clamp(48px, 12vw, 84px) clamp(20px, 8vw, 72px);
+      }
+
+      .evento-insight__glow {
+        filter: blur(150px);
+      }
+
+      .evento-insight__title {
+        letter-spacing: 0.03em;
+      }
+
+      .evento-insight__logo {
+        width: clamp(150px, 22vw, 200px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .evento-insight {
+        padding: clamp(40px, 16vw, 76px) clamp(18px, 9vw, 60px);
+      }
+
+      .evento-insight__glow {
+        width: clamp(360px, 110vw, 540px);
+        height: clamp(360px, 110vw, 540px);
+        filter: blur(160px);
+      }
+
+      .evento-insight__content {
+        gap: clamp(14px, 5vw, 24px);
+      }
+
+      .evento-insight__title {
+        font-size: clamp(24px, 6vw + 14px, 36px);
+      }
+
+      .evento-insight__subtitle {
+        font-size: clamp(15px, 4.5vw, 20px);
+      }
+
+      .evento-insight__logo {
+        width: clamp(140px, 32vw, 190px);
+      }
+
+      .evento-learn-card {
+        border-radius: 22px;
+      }
+
+      .evento-learn-item {
+        gap: clamp(12px, 5vw, 16px);
+        padding: clamp(10px, 6vw, 20px) clamp(14px, 7vw, 24px);
+      }
+
+      .evento-learn-icon {
+        width: clamp(28px, 8vw, 36px);
+        height: clamp(28px, 8vw, 36px);
+      }
+
+      .evento-learn-text {
+        font-size: clamp(15px, 4.5vw, 20px);
+      }
+    }
+
+    .evento-bonus-section {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: clamp(24px, 4vw, 48px) clamp(24px, 6vw, 160px) 0;
+    }
+
+    .evento-bonus-card {
+      position: relative;
+      width: min(820px, 100%);
+      border-radius: 36px;
+      padding: clamp(48px, 6vw, 80px) clamp(32px, 7vw, 96px);
+      background:
+        linear-gradient(145deg, rgba(225, 67, 6, 0.14) 0%, rgba(10, 10, 10, 0.96) 45%, rgba(0, 0, 0, 0.9) 100%);
+      box-shadow: 0 42px 120px rgba(225, 67, 6, 0.28);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(16px, 2.6vw, 28px);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .evento-bonus-card::before {
+      content: "";
+      position: absolute;
+      inset: -30% -35%;
+      background: radial-gradient(circle at 30% 30%, rgba(225, 67, 6, 0.24), rgba(225, 67, 6, 0));
+      filter: blur(140px);
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    .evento-bonus-badge {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px clamp(20px, 3.6vw, 34px);
+      border-radius: 999px;
+      background: linear-gradient(130deg, rgba(255, 120, 48, 0.45) 0%, rgba(225, 67, 6, 0.85) 55%, rgba(170, 40, 4, 0.9) 100%);
+      box-shadow: 0 14px 34px rgba(225, 67, 6, 0.35);
+      border: 1px solid rgba(225, 67, 6, 0.9);
+      font-size: clamp(13px, 0.9vw + 10px, 18px);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--tone-light);
+    }
+
+    .evento-bonus-title {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(20px, 1.5vw + 18px, 34px);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #e14306;
+      max-width: min(620px, 92vw);
+      line-height: 1.2;
+    }
+
+    .evento-bonus-subtitle {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(15px, 0.9vw + 13px, 22px);
+      font-weight: 500;
+      line-height: 1.5;
+      color: rgba(var(--tone-light-rgb), 0.88);
+      max-width: min(580px, 92vw);
+    }
+
+    @media (max-width: 768px) {
+      .evento-bonus-card {
+        border-radius: 28px;
+        padding: clamp(40px, 8.5vw, 72px) clamp(26px, 8vw, 70px);
+      }
+
+      .evento-bonus-badge {
+        letter-spacing: 0.1em;
+        padding: 9px clamp(22px, 6vw, 30px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .evento-bonus-section {
+        padding: clamp(40px, 16vw, 72px) clamp(18px, 10vw, 56px) 0;
+      }
+
+      .evento-bonus-card {
+        border-radius: 24px;
+      }
+
+      .evento-bonus-badge {
+        letter-spacing: 0.08em;
+        font-size: clamp(12px, 4vw, 16px);
+      }
+    }
+
+    .evento-price-section {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: clamp(48px, 11vw, 120px) clamp(24px, 7vw, 160px) 0;
+    }
+
+    .evento-price-card {
+      width: min(860px, 100%);
+      border-radius: 34px;
+      padding: clamp(42px, 6vw, 72px) clamp(36px, 7vw, 88px);
+      background:
+        linear-gradient(140deg, rgba(255, 132, 64, 0.12) 0%, rgba(20, 20, 20, 0.94) 45%, rgba(0, 0, 0, 0.92) 100%);
+      box-shadow: 0 38px 120px rgba(225, 67, 6, 0.32);
+      display: grid;
+      gap: clamp(20px, 3vw, 36px);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .evento-price-card::after {
+      content: "";
+      position: absolute;
+      inset: -40% -30% auto;
+      height: clamp(320px, 40vw, 520px);
+      background: radial-gradient(circle at 50% 20%, rgba(225, 67, 6, 0.2), rgba(225, 67, 6, 0));
+      filter: blur(180px);
+      opacity: 0.85;
+      pointer-events: none;
+    }
+
+    .evento-price-badge {
+      justify-self: center;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 20px;
+      border-radius: 999px;
+      background: rgba(225, 67, 6, 0.16);
+      border: 1px solid rgba(225, 67, 6, 0.6);
+      color: var(--tone-light);
+      font-size: clamp(12px, 0.9vw + 9px, 18px);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      z-index: 1;
+    }
+
+    .evento-price-heading {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: clamp(12px, 2vw, 24px);
+      color: var(--tone-light);
+    }
+
+    .evento-price-title {
+      font-size: clamp(22px, 1.8vw + 20px, 38px);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .evento-price-subtitle {
+      font-size: clamp(15px, 1vw + 13px, 22px);
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      color: rgba(var(--tone-light-rgb), 0.72);
+    }
+
+    .evento-price-values {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: clamp(8px, 1.5vw, 16px);
+      justify-items: center;
+    }
+
+    .evento-price-amount {
+      font-size: clamp(42px, 4.5vw + 24px, 84px);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--tone-light);
+    }
+
+    .evento-price-installments {
+      font-size: clamp(16px, 1vw + 14px, 24px);
+      color: rgba(var(--tone-light-rgb), 0.75);
+      font-weight: 500;
+    }
+
+    .evento-price-cta {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: clamp(14px, 1.8vw, 20px) clamp(38px, 6vw, 64px);
+      border-radius: 999px;
+      background: linear-gradient(115deg, rgba(var(--tone-light-rgb), 0.98) 0%, rgba(225, 67, 6, 0.95) 100%);
+      color: #0b0b0b;
+      font-size: clamp(16px, 1.4vw + 14px, 26px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      box-shadow: 0 22px 48px rgba(225, 67, 6, 0.35);
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      background-position: center;
+    }
+
+    .evento-price-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 28px 60px rgba(225, 67, 6, 0.45);
+    }
+
+    .evento-price-cta:focus-visible {
+      outline: 3px solid rgba(var(--tone-light-rgb), 0.8);
+      outline-offset: 4px;
+    }
+
+    .evento-price-progress {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: clamp(12px, 1.6vw, 20px);
+      justify-items: center;
+    }
+
+    .evento-progress-bar {
+      width: min(380px, 100%);
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(var(--tone-light-rgb), 0.18);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .evento-progress-fill {
+      position: absolute;
+      inset: 0;
+      width: 84%;
+      border-radius: 999px;
+      background: linear-gradient(120deg, #ff7630 0%, #e14306 60%, #c13202 100%);
+      box-shadow: 0 10px 25px rgba(225, 67, 6, 0.45);
+      transition: width 0.6s ease;
+    }
+
+    .evento-progress-label {
+      font-size: clamp(14px, 0.9vw + 11px, 20px);
+      font-weight: 500;
+      color: rgba(var(--tone-light-rgb), 0.82);
+    }
+
+    .evento-about-section {
+      width: 100%;
+      padding: clamp(64px, 12vw, 140px) clamp(24px, 7vw, 160px);
+    }
+
+    .evento-about__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+      gap: clamp(32px, 6vw, 72px);
+      align-items: center;
+    }
+
+    .evento-about__image-wrapper {
+      position: relative;
+      border-radius: 0;
+      overflow: visible;
+      box-shadow: none;
+    }
+
+    .evento-about__image {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .evento-about__content {
+      display: grid;
+      gap: clamp(18px, 3vw, 28px);
+    }
+
+    .evento-about__title {
+      font-size: clamp(26px, 2vw + 24px, 48px);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--tone-light);
+    }
+
+    .evento-about__text {
+      font-size: clamp(16px, 1vw + 14px, 24px);
+      line-height: 1.7;
+      color: rgba(var(--tone-light-rgb), 0.82);
+    }
+
+    .evento-about__text strong {
+      color: var(--tone-light);
+    }
+
+    .evento-modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(6px);
+      z-index: 999;
+      padding: clamp(28px, 6vw, 64px);
+    }
+
+    .evento-modal.is-visible {
+      display: grid;
+    }
+
+    .evento-modal__panel {
+      position: relative;
+      width: min(560px, 100%);
+      background: linear-gradient(160deg, rgba(225, 67, 6, 0.12) 0%, rgba(10, 10, 10, 0.94) 55%, rgba(0, 0, 0, 0.96) 100%);
+      border-radius: clamp(20px, 3vw, 28px);
+      padding: clamp(32px, 5vw, 56px);
+      color: var(--tone-light);
+      border: 1px solid rgba(225, 67, 6, 0.32);
+      box-shadow: 0 32px 80px rgba(225, 67, 6, 0.28);
+    }
+
+    .evento-modal__title {
+      font-size: clamp(22px, 2vw + 18px, 34px);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: clamp(20px, 4vw, 28px);
+      color: #e14306;
+    }
+
+    .evento-modal__close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(225, 67, 6, 0.45);
+      background: rgba(0, 0, 0, 0.35);
+      color: var(--tone-light);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      transition: background 0.2s ease, border 0.2s ease;
+    }
+
+    .evento-modal__close:hover {
+      background: rgba(225, 67, 6, 0.16);
+      border-color: rgba(225, 67, 6, 0.65);
+    }
+
+    .evento-form {
+      display: grid;
+      gap: clamp(16px, 3vw, 20px);
+    }
+
+    .evento-field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .evento-field label {
+      font-size: clamp(14px, 0.8vw + 12px, 18px);
+      letter-spacing: 0.04em;
+    }
+
+    .evento-input,
+    .evento-input input {
+      font-family: inherit;
+    }
+
+    .evento-input input {
+      width: 100%;
+      padding: clamp(12px, 2vw, 16px);
+      border-radius: 12px;
+      border: 1px solid rgba(var(--tone-light-rgb), 0.15);
+      background: rgba(0, 0, 0, 0.35);
+      color: var(--tone-light);
+      font-size: clamp(15px, 0.9vw + 13px, 20px);
+      transition: border 0.2s ease, background 0.2s ease;
+    }
+
+    .evento-input input::placeholder {
+      color: rgba(var(--tone-light-rgb), 0.5);
+    }
+
+    .evento-input input:focus-visible {
+      outline: none;
+      border-color: rgba(225, 67, 6, 0.6);
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    .evento-input--phone {
+      display: grid;
+      grid-template-columns: auto auto 1fr;
+      align-items: center;
+      gap: clamp(10px, 2vw, 16px);
+      padding: clamp(10px, 1.8vw, 14px);
+      border-radius: 12px;
+      border: 1px solid rgba(var(--tone-light-rgb), 0.18);
+      background: rgba(0, 0, 0, 0.35);
+    }
+
+    .evento-input--phone input {
+      border: none;
+      padding: 0;
+      background: transparent;
+    }
+
+    .evento-input--phone input:focus-visible {
+      border: none;
+    }
+
+    .evento-phone-flag {
+      width: clamp(32px, 3vw, 36px);
+      height: clamp(22px, 2.4vw, 26px);
+    }
+
+    .evento-phone-ddi {
+      font-size: clamp(15px, 1vw + 12px, 18px);
+      color: var(--tone-light);
+      letter-spacing: 0.04em;
+    }
+
+    .evento-form__submit {
+      margin-top: clamp(10px, 2vw, 16px);
+      border: none;
+      border-radius: 999px;
+      padding: clamp(14px, 2vw, 18px);
+      font-size: clamp(15px, 1vw + 14px, 22px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: linear-gradient(110deg, rgba(var(--tone-light-rgb), 0.92), rgba(225, 67, 6, 0.92));
+      color: #0b0b0b;
+      cursor: pointer;
+      box-shadow: 0 20px 45px rgba(225, 67, 6, 0.32);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .evento-form__submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 26px 60px rgba(225, 67, 6, 0.38);
+    }
+
+    .evento-form__submit:disabled {
+      opacity: 0.6;
+      cursor: progress;
+      transform: none;
+      box-shadow: none;
+    }
+
+    @media (max-width: 768px) {
+      .evento-price-card {
+        padding: clamp(38px, 10vw, 64px) clamp(26px, 9vw, 64px);
+        border-radius: 28px;
+      }
+
+      .evento-price-cta {
+        font-size: clamp(16px, 3.6vw, 22px);
+        padding: clamp(14px, 4.4vw, 18px) clamp(30px, 10vw, 46px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .evento-price-section {
+        padding: clamp(38px, 14vw, 90px) clamp(18px, 9vw, 56px) 0;
+      }
+
+      .evento-price-card {
+        border-radius: 24px;
+      }
+
+      .evento-price-progress {
+        gap: clamp(10px, 5vw, 16px);
+      }
+
+      .evento-about__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .evento-about-section {
+        padding: clamp(48px, 20vw, 110px) clamp(18px, 9vw, 56px);
+      }
+    }
+
+    .evento-faq-section {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: clamp(64px, 12vw, 140px) clamp(24px, 7vw, 160px) clamp(96px, 14vw, 180px);
+    }
+
+    .evento-faq-container {
+      width: min(920px, 100%);
+      display: grid;
+      gap: clamp(28px, 4vw, 48px);
+    }
+
+    .evento-faq-heading {
+      display: grid;
+      gap: clamp(12px, 2vw, 20px);
+      text-align: center;
+    }
+
+    .evento-faq-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 20px;
+      border-radius: 999px;
+      background: rgba(225, 67, 6, 0.18);
+      color: var(--tone-light);
+      font-size: clamp(12px, 0.8vw + 10px, 18px);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      justify-self: center;
+    }
+
+    .evento-faq-title {
+      font-size: clamp(26px, 2vw + 24px, 48px);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--tone-light);
+    }
+
+    .evento-faq-description {
+      font-size: clamp(16px, 1vw + 14px, 24px);
+      color: rgba(var(--tone-light-rgb), 0.72);
+      max-width: min(600px, 92vw);
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .evento-faq-list {
+      display: grid;
+      gap: clamp(16px, 2.6vw, 28px);
+    }
+
+    .evento-faq-item {
+      position: relative;
+      border-radius: 28px;
+      padding: clamp(22px, 2.8vw, 32px) clamp(24px, 3vw, 38px);
+      background: linear-gradient(140deg, rgba(255, 132, 64, 0.06) 0%, rgba(12, 12, 12, 0.92) 55%, rgba(0, 0, 0, 0.92) 100%);
+      border: 1px solid rgba(225, 67, 6, 0.22);
+      box-shadow: 0 26px 60px rgba(225, 67, 6, 0.18);
+      overflow: hidden;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .evento-faq-item::before {
+      content: "";
+      position: absolute;
+      inset: -40% auto auto -30%;
+      width: clamp(280px, 40vw, 520px);
+      height: clamp(280px, 40vw, 520px);
+      background: radial-gradient(circle, rgba(225, 67, 6, 0.12), rgba(225, 67, 6, 0));
+      filter: blur(120px);
+      opacity: 0.85;
+    }
+
+    .evento-faq-toggle {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: clamp(12px, 2vw, 20px);
+      background: transparent;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .evento-faq-question {
+      flex: 1;
+      font-size: clamp(18px, 1.2vw + 16px, 28px);
+      font-weight: 600;
+      color: var(--tone-light);
+    }
+
+    .evento-faq-icon {
+      flex-shrink: 0;
+      width: clamp(34px, 3.4vw, 42px);
+      height: clamp(34px, 3.4vw, 42px);
+      border-radius: 50%;
+      border: 1px solid rgba(225, 67, 6, 0.6);
+      display: grid;
+      place-items: center;
+      color: #e14306;
+      font-size: clamp(16px, 1.2vw + 12px, 22px);
+      transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+    }
+
+    .evento-faq-content {
+      position: relative;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, margin-top 0.35s ease;
+      margin-top: 0;
+    }
+
+    .evento-faq-answer {
+      font-size: clamp(15px, 0.9vw + 13px, 21px);
+      color: rgba(var(--tone-light-rgb), 0.78);
+      line-height: 1.6;
+    }
+
+    .evento-faq-item.is-open {
+      border-color: rgba(225, 67, 6, 0.5);
+      box-shadow: 0 30px 70px rgba(225, 67, 6, 0.24);
+    }
+
+    .evento-faq-item.is-open .evento-faq-icon {
+      transform: rotate(45deg);
+      background: rgba(225, 67, 6, 0.12);
+      color: var(--tone-light);
+    }
+
+    .evento-faq-item.is-open .evento-faq-content {
+      margin-top: clamp(10px, 1.8vw, 18px);
+    }
+
+    @media (max-width: 768px) {
+      .evento-faq-section {
+        padding: clamp(52px, 16vw, 120px) clamp(20px, 9vw, 80px) clamp(80px, 18vw, 150px);
+      }
+
+      .evento-faq-item {
+        border-radius: 22px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .evento-faq-section {
+        padding: clamp(48px, 20vw, 110px) clamp(18px, 12vw, 60px) clamp(72px, 22vw, 140px);
+      }
+
+      .evento-faq-item {
+        padding: clamp(20px, 7vw, 30px) clamp(18px, 8vw, 28px);
+      }
+    }
+
+    .evento-footer {
+      width: 100%;
+      padding: clamp(32px, 6vw, 64px) clamp(18px, 6vw, 80px) clamp(32px, 6vw, 64px);
+      text-align: center;
+      display: grid;
+      gap: clamp(6px, 1.5vw, 12px);
+      background: rgba(0, 0, 0, 0.96);
+      color: rgba(var(--tone-light-rgb), 0.72);
+      font-size: clamp(13px, 0.8vw + 11px, 18px);
+      letter-spacing: 0.04em;
+    }
+
+    .evento-footer__brand {
+      font-weight: 600;
+      color: rgba(var(--tone-light-rgb), 0.86);
+    }
+
+    @media (max-width: 480px) {
+      .evento-card {
+        border-radius: 20px;
+      }
+
+      .evento-card__title {
+        letter-spacing: 0.05em;
+      }
+
+      .evento-card__primary {
+        font-size: clamp(18px, 5vw, 24px);
+      }
+
+      .evento-card__secondary {
+        font-size: clamp(14px, 4vw, 18px);
+        margin-bottom: clamp(10px, 4vw, 18px);
+      }
+    }
+
+    .evento-schedule-section {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: clamp(32px, 6vw, 64px) clamp(24px, 6vw, 160px) 0;
+      text-align: center;
+    }
+
+    .evento-schedule-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(24px, 4vw, 32px);
+      gap: clamp(24px, 4vw, 32px);
+    }
+
+    .evento-bonus-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: clamp(16px, 2vw, 24px);
+      width: 100%;
+      margin-top: clamp(16px, 2vw, 32px);
+    }
+
+    .evento-bonus-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(225, 67, 6, 0.2);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .evento-bonus-item:hover {
+      background: rgba(225, 67, 6, 0.08);
+      border-color: rgba(225, 67, 6, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .evento-bonus-icon {
+      color: #e14306;
+      display: flex;
+      align-items: center;
+    }
+
+    .evento-bonus-text {
+      font-size: clamp(14px, 1vw + 10px, 18px);
+      font-weight: 500;
+      color: rgba(var(--tone-light-rgb), 0.9);
+      text-align: left;
+    }
+
+    .evento-schedule-title {
+      font-size: clamp(24px, 2vw + 20px, 40px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #e14306;
+    }
+
+    .evento-schedule-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(14px, 2vw, 18px) clamp(32px, 5vw, 48px);
+      border-radius: 999px;
+      background: transparent;
+      border: 1px solid #e14306;
+      color: var(--tone-light);
+      font-size: clamp(15px, 1vw + 13px, 20px);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .evento-schedule-btn:hover {
+      background: rgba(225, 67, 6, 0.15);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(225, 67, 6, 0.2);
+    }
+
+    .evento-modal__panel--pdf {
+      width: min(900px, 95vw);
+      height: min(800px, 90vh);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .evento-modal__panel--pdf .evento-modal__content {
+      flex: 1;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .evento-modal__panel--pdf iframe {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <script>
+    !(function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = "2.0";
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+    fbq("init", "763867839648504");
+    fbq("track", "PageView");
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display: none"
+      src="https://www.facebook.com/tr?id=763867839648504&amp;ev=PageView&amp;noscript=1" alt="" />
+  </noscript>
 </head>
+
 <body>
-    <header>
-        <img src="images/camila-header-v2.png" alt="Header Astec por Camila Carvalho" class="header-image">
-    </header>
-
-    <div class="container">
-        <p class="subtitle">Aqui você recebe seu imóvel sem erros e reforma com <strong>total segurança!</strong></p>
-        <hr class="divider">
-
-        <p class="intro-text">
-            Escolha o próximo passo pra sua reforma ou vistoria.
+  <main class="evento-page">
+    <section class="evento-hero">
+      <video class="evento-hero__video" src="images/video-bg-evento.mp4" autoplay muted loop playsinline></video>
+      <div class="evento-hero__topbar">
+        <span class="evento-hero__label">FORMAÇÃO COMPLETA</span>
+        <span class="evento-hero__divider" aria-hidden="true"></span>
+        <span class="evento-hero__datetime">VAGAS LIMITADAS</span>
+      </div>
+      <div class="evento-hero__content">
+        <img src="images/logo-formacao.png" alt="Formação prática em vistoria" class="evento-hero__logo" />
+        <p class="evento-hero__tagline">
+          FATURE MAIS DE R$ 15 MIL COM VISTORIAS DE ENTREGA DE CHAVES
         </p>
-        <div class="arrow-container">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve">
-                <path d="M9.6,31c-0.8,0.8-0.8,1.9,0,2.7l15,14.7c0.8,0.8,2,0.8,2.8,0l15.1-14.7c0.8-0.8,0.8-1.9,0-2.7l-2.8-2.7 c-0.8-0.8-2-0.8-2.8,0l-4.7,4.6C31.4,33.7,30,33.2,30,32V5c0-1-0.9-2-2-2h-4c-1.1,0-2,1.1-2,2v27c0,1.2-1.4,1.7-2.2,0.9l-4.7-4.6 c-0.8-0.8-2-0.8-2.8,0L9.6,31z"/>
-            </svg>
+        <p class="evento-hero__subtitle">
+          APRENDA O MÉTODO PARA FECHAR VISTORIAS E ULTRAPASSAR R$ 15 MIL EM 30 DIAS
+        </p>
+      </div>
+    </section>
+    <section class="evento-card-section">
+      <article class="evento-card">
+        <h2 class="evento-card__title">Para quem é</h2>
+        <p class="evento-card__primary">Engenheiros e Arquitetos</p>
+        <p class="evento-card__secondary">
+          Recém-formados ou profissionais que querem acelerar resultados em vistorias.
+        </p>
+        <span class="evento-card__divider" aria-hidden="true"></span>
+        <p class="evento-card__primary">Compradores de imóveis</p>
+        <p class="evento-card__secondary">
+          Pessoas que querem vistoriar seu próprio imóvel com padrão profissional.
+        </p>
+      </article>
+    </section>
+
+    <section class="evento-learn-section">
+      <article class="evento-learn-card">
+        <h2 class="evento-learn-title">O que você aprenderá</h2>
+        <div class="evento-learn-list">
+          <div class="evento-learn-item">
+            <span class="evento-learn-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M9.02975 3.3437C10.9834 2.88543 13.0166 2.88543 14.9703 3.3437C17.7916 4.00549 19.9945 6.20842 20.6563 9.02975C21.1146 10.9834 21.1146 13.0166 20.6563 14.9703C19.9945 17.7916 17.7916 19.9945 14.9703 20.6563C13.0166 21.1146 10.9834 21.1146 9.02975 20.6563C6.20842 19.9945 4.0055 17.7916 3.3437 14.9703C2.88543 13.0166 2.88543 10.9834 3.3437 9.02974C4.0055 6.20841 6.20842 4.00549 9.02975 3.3437ZM15.0524 10.4773C15.2689 10.2454 15.2563 9.88195 15.0244 9.6655C14.7925 9.44906 14.4291 9.46159 14.2126 9.6935L11.2678 12.8487L9.77358 11.3545C9.54927 11.1302 9.1856 11.1302 8.9613 11.3545C8.73699 11.5788 8.73699 11.9425 8.9613 12.1668L10.8759 14.0814C10.986 14.1915 11.1362 14.2522 11.2919 14.2495C11.4477 14.2468 11.5956 14.181 11.7019 14.0671L15.0524 10.4773Z"
+                  fill="#E14306" />
+              </svg>
+            </span>
+            <p class="evento-learn-text">Como vistoriar um imóvel na prática</p>
+          </div>
+          <div class="evento-learn-item">
+            <span class="evento-learn-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M9.02975 3.3437C10.9834 2.88543 13.0166 2.88543 14.9703 3.3437C17.7916 4.00549 19.9945 6.20842 20.6563 9.02975C21.1146 10.9834 21.1146 13.0166 20.6563 14.9703C19.9945 17.7916 17.7916 19.9945 14.9703 20.6563C13.0166 21.1146 10.9834 21.1146 9.02975 20.6563C6.20842 19.9945 4.0055 17.7916 3.3437 14.9703C2.88543 13.0166 2.88543 10.9834 3.3437 9.02974C4.0055 6.20841 6.20842 4.00549 9.02975 3.3437ZM15.0524 10.4773C15.2689 10.2454 15.2563 9.88195 15.0244 9.6655C14.7925 9.44906 14.4291 9.46159 14.2126 9.6935L11.2678 12.8487L9.77358 11.3545C9.54927 11.1302 9.1856 11.1302 8.9613 11.3545C8.73699 11.5788 8.73699 11.9425 8.9613 12.1668L10.8759 14.0814C10.986 14.1915 11.1362 14.2522 11.2919 14.2495C11.4477 14.2468 11.5956 14.181 11.7019 14.0671L15.0524 10.4773Z"
+                  fill="#E14306" />
+              </svg>
+            </span>
+            <p class="evento-learn-text">Como fazer o laudo de vistoria</p>
+          </div>
+          <div class="evento-learn-item">
+            <span class="evento-learn-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M9.02975 3.3437C10.9834 2.88543 13.0166 2.88543 14.9703 3.3437C17.7916 4.00549 19.9945 6.20842 20.6563 9.02975C21.1146 10.9834 21.1146 13.0166 20.6563 14.9703C19.9945 17.7916 17.7916 19.9945 14.9703 20.6563C13.0166 21.1146 10.9834 21.1146 9.02975 20.6563C6.20842 19.9945 4.0055 17.7916 3.3437 14.9703C2.88543 13.0166 2.88543 10.9834 3.3437 9.02974C4.0055 6.20841 6.20842 4.00549 9.02975 3.3437ZM15.0524 10.4773C15.2689 10.2454 15.2563 9.88195 15.0244 9.6655C14.7925 9.44906 14.4291 9.46159 14.2126 9.6935L11.2678 12.8487L9.77358 11.3545C9.54927 11.1302 9.1856 11.1302 8.9613 11.3545C8.73699 11.5788 8.73699 11.9425 8.9613 12.1668L10.8759 14.0814C10.986 14.1915 11.1362 14.2522 11.2919 14.2495C11.4477 14.2468 11.5956 14.181 11.7019 14.0671L15.0524 10.4773Z"
+                  fill="#E14306" />
+              </svg>
+            </span>
+            <p class="evento-learn-text">Quanto cobrar pela sua vistoria</p>
+          </div>
+          <div class="evento-learn-item">
+            <span class="evento-learn-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M9.02975 3.3437C10.9834 2.88543 13.0166 2.88543 14.9703 3.3437C17.7916 4.00549 19.9945 6.20842 20.6563 9.02975C21.1146 10.9834 21.1146 13.0166 20.6563 14.9703C19.9945 17.7916 17.7916 19.9945 14.9703 20.6563C13.0166 21.1146 10.9834 21.1146 9.02975 20.6563C6.20842 19.9945 4.0055 17.7916 3.3437 14.9703C2.88543 13.0166 2.88543 10.9834 3.3437 9.02974C4.0055 6.20841 6.20842 4.00549 9.02975 3.3437ZM15.0524 10.4773C15.2689 10.2454 15.2563 9.88195 15.0244 9.6655C14.7925 9.44906 14.4291 9.46159 14.2126 9.6935L11.2678 12.8487L9.77358 11.3545C9.54927 11.1302 9.1856 11.1302 8.9613 11.3545C8.73699 11.5788 8.73699 11.9425 8.9613 12.1668L10.8759 14.0814C10.986 14.1915 11.1362 14.2522 11.2919 14.2495C11.4477 14.2468 11.5956 14.181 11.7019 14.0671L15.0524 10.4773Z"
+                  fill="#E14306" />
+              </svg>
+            </span>
+            <p class="evento-learn-text">Como prospectar clientes</p>
+          </div>
         </div>
-
-        <div class="cards-container">
-            <!-- Card 1: Guia de Reforma na Prática -->
-            <div class="product-card">
-                <div class="card-image">
-                    <img src="images/guia-reforma-ipad.png" alt="Guia de Reforma na Prática">
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Guia de Reforma na Prática</h3>
-                    <p class="card-description">Transforme sua reforma em sucesso! Aprenda o passo a passo completo para reformar sem erros, economizar dinheiro e evitar dores de cabeça. Tudo que você precisa saber em um guia prático e direto.</p>
-                    <div class="card-highlights">
-                        <span class="highlight">✓ Passo a passo completo</span>
-                        <span class="highlight">✓ Evite erros custosos</span>
-                        <span class="highlight">✓ Economize tempo e dinheiro</span>
-                    </div>
-                    <a href="guia-reforma.html" class="card-button">
-                        <span>Quero o Guia Completo</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
+      </article>
+    </section>
+    <section class="evento-schedule-section">
+      <div class="evento-schedule-container">
+        <h2 class="evento-schedule-title">Cronograma do curso</h2>
+        <button class="evento-schedule-btn" type="button" data-modal-open="pdf">
+          Ver cronograma completo
+        </button>
+      </div>
+    </section>
+    <section class="evento-bonus-section">
+      <article class="evento-bonus-card">
+        <span class="evento-bonus-badge">Bônus especial</span>
+        <h2 class="evento-bonus-title">Bônus Exclusivo</h2>
+        <div class="evento-bonus-list">
+          <div class="evento-bonus-item">
+            <div class="evento-bonus-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor" />
+              </svg>
             </div>
-
-            <!-- Card 2: Checklist de Recebimento das Chaves -->
-            <div class="product-card">
-                <div class="card-image">
-                    <img src="images/checklist-ipad.png" alt="Checklist de Recebimento das Chaves">
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Checklist de Recebimento das Chaves</h3>
-                    <p class="card-description">Receba seu imóvel com total segurança! Checklist completo para vistoriar cada detalhe antes de assinar. Proteja seu investimento e evite problemas futuros com este guia essencial.</p>
-                    <div class="card-highlights">
-                        <span class="highlight">✓ Vistoria completa</span>
-                        <span class="highlight">✓ Proteja seu investimento</span>
-                        <span class="highlight">✓ Evite problemas futuros</span>
-                    </div>
-                    <a href="https://pay.hotmart.com/W100422992W?checkoutMode=10" target="_blank" class="card-button">
-                        <span>Garantir Meu Checklist</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
+            <span class="evento-bonus-text">Checklist de recebimento das chaves</span>
+          </div>
+          <div class="evento-bonus-item">
+            <div class="evento-bonus-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                  fill="currentColor" />
+              </svg>
             </div>
-
-            <!-- Card 3: Roteiro da Compra Segura -->
-            <div class="product-card">
-                <div class="card-image">
-                    <img src="images/roteiro-compra-segura.png" alt="Roteiro da Compra Segura">
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Roteiro da Compra Segura</h3>
-                    <p class="card-description">Compre seu imóvel com total segurança! Guia completo para vistoria pré-compra com checklists práticos e testes simples. Evite surpresas caras e negocie melhor com este roteiro essencial.</p>
-                    <div class="card-highlights">
-                        <span class="highlight">✓ Checklists práticos</span>
-                        <span class="highlight">✓ Testes simples</span>
-                        <span class="highlight">✓ Evite surpresas caras</span>
-                    </div>
-                    <a href="https://pay.hotmart.com/V101740973G" target="_blank" class="card-button">
-                        <span>Garantir Meu Roteiro</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
+            <span class="evento-bonus-text">Modelo de laudo técnico</span>
+          </div>
+          <div class="evento-bonus-item">
+            <div class="evento-bonus-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm0 4c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm6 12H6v-1.4c0-2 4-3.1 6-3.1s6 1.1 6 3.1V19z"
+                  fill="currentColor" />
+              </svg>
             </div>
-
-            <!-- Card 4: Planilha Financeira de Reforma -->
-            <div class="product-card">
-                <div class="card-image">
-                    <img src="images/planilha-financeira.png" alt="Planilha Financeira de Reforma">
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Planilha Financeira de Reforma</h3>
-                    <p class="card-description">Controle total da sua reforma! Planilha completa para organizar custos, comparar cotações e acompanhar gastos. Tenha previsibilidade, economize e mantenha sua obra no prazo e orçamento.</p>
-                    <div class="card-highlights">
-                        <span class="highlight">✓ Controle de custos</span>
-                        <span class="highlight">✓ Compare cotações</span>
-                        <span class="highlight">✓ Obra no prazo</span>
-                    </div>
-                    <a href="https://pay.hotmart.com/Q101742289N" target="_blank" class="card-button">
-                        <span>Baixar Planilha</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
+            <span class="evento-bonus-text">Modelo de Proposta</span>
+          </div>
+          <div class="evento-bonus-item">
+            <div class="evento-bonus-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"
+                  fill="currentColor" />
+              </svg>
             </div>
-
-            <!-- Card 5: Vistoria de Imóvel Presencial -->
-            <div class="product-card">
-                <div class="card-image">
-                    <div class="location-badge">Brasília/DF e entorno</div>
-                    <img src="images/vistoria.png" alt="Vistoria de Imóvel Presencial">
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Vistoria de Imóvel Presencial</h3>
-                    <p class="card-description">Tenha a tranquilidade de uma vistoria profissional! Camila vai pessoalmente ao seu imóvel para uma análise técnica completa. Disponível exclusivamente para Brasília/DF e entorno.</p>
-                    <div class="card-highlights">
-                        <span class="highlight">✓ Análise técnica profissional</span>
-                        <span class="highlight">✓ Relatório detalhado</span>
-                        <span class="highlight">✓ Apenas Brasília/DF</span>
-                    </div>
-                    <a href="https://api.whatsapp.com/send?phone=5561999827553&text=Ol%C3%A1%20Camila%21%20Vim%20atrav%C3%A9s%20do%20seu%20link%20e%20tenho%20interesse%20em%20saber%20mais%20sobre%20a%20VISTORIA%20DE%20IM%C3%93VEL%20para%20recebimento%20das%20chaves." target="_blank" class="card-button">
-                        <span>Agendar Vistoria</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Card 6: Gestão de Obras -->
-            <div class="product-card">
-                <div class="card-image">
-                    <div class="location-badge">Brasília/DF e entorno</div>
-                    <img src="images/gestao-obras.png" alt="Gestão de Obras">
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Gestão de Obras</h3>
-                    <p class="card-description">Transforme sua obra em sucesso garantido! Acompanhamento técnico completo desde o planejamento até a entrega final. Evite atrasos, desperdícios e garanta qualidade em cada etapa da construção.</p>
-                    <div class="card-highlights">
-                        <span class="highlight">✓ Acompanhamento técnico</span>
-                        <span class="highlight">✓ Controle de qualidade</span>
-                        <span class="highlight">✓ Apenas Brasília/DF</span>
-                    </div>
-                    <a href="https://api.whatsapp.com/send?phone=5561999827553&text=Ol%C3%A1%20Camila%21%20Vim%20atrav%C3%A9s%20do%20seu%20link%20e%20tenho%20interesse%20em%20saber%20mais%20sobre%20a%20VISTORIA%20DE%20IM%C3%93VEL%20para%20recebimento%20das%20chaves." target="_blank" class="card-button">
-                        <span>Solicitar Orçamento</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+            <span class="evento-bonus-text">E-book com as principais normas</span>
+          </div>
         </div>
+      </article>
+    </section>
+    <section class="evento-price-section">
+      <article class="evento-price-card">
+        <span class="evento-price-badge">Vagas limitadas</span>
+        <div class="evento-price-heading">
+          <h2 class="evento-price-title">Invista na sua vaga agora</h2>
 
-        <section class="about-me">
-            <div class="about-text">
-                <h2>Olá, eu sou a Camila!</h2>
-                <p>Sou casada e mãe de um casalzinho lindo. Atuo há mais de 17 anos com Engenharia Civil e, ao longo desse tempo, acompanhei de perto as dificuldades que muita gente passa na hora de reformar ou receber as chaves do novo imóvel.</p>
-                <p>Meu objetivo hoje é ajudar você a evitar prejuízos, ter mais segurança e conseguir dormir tranquilo, sabendo que está protegendo o seu patrimônio e o seu dinheiro.</p>
+        </div>
+        <div class="evento-price-values">
+          <p class="evento-price-amount">R$ 997</p>
+          <p class="evento-price-installments">ou 12x de R$ 103,11</p>
+        </div>
+        <div class="evento-price-cta-wrapper">
+          <button class="evento-price-cta" type="button" data-modal-open="lead">
+            garantir minha vaga
+          </button>
+        </div>
+        <div class="evento-price-progress">
+          <div class="evento-progress-bar">
+            <span class="evento-progress-fill" aria-hidden="true"></span>
+          </div>
+          <p class="evento-progress-label">84% das vagas já foram preenchidas</p>
+        </div>
+      </article>
+    </section>
+    <div class="evento-modal" id="leadModal" aria-hidden="true">
+      <div class="evento-modal__panel" role="dialog" aria-modal="true" aria-labelledby="leadModalTitle">
+        <button class="evento-modal__close" type="button" data-modal-close aria-label="Fechar modal">
+          ×
+        </button>
+        <h3 class="evento-modal__title" id="leadModalTitle">Preencha os dados abaixo para assegurar sua vaga</h3>
+        <form class="evento-form" id="leadForm">
+          <div class="evento-field">
+            <label for="leadName">Seu nome</label>
+            <div class="evento-input">
+              <input type="text" id="leadName" name="nome" placeholder="Digite seu nome completo" autocomplete="name"
+                required />
             </div>
-            <div class="about-image">
-                <img src="images/camila-expert.png" alt="Retrato de Camila, a especialista em engenharia.">
+          </div>
+          <div class="evento-field">
+            <label for="leadEmail">Seu e-mail</label>
+            <div class="evento-input">
+              <input type="email" id="leadEmail" name="email" placeholder="Digite seu melhor e-mail"
+                autocomplete="email" required />
             </div>
-        </section>
-
-        <section class="social-links">
-            <a href="https://instagram.com/astec_engenharia" target="_blank" class="social-icon">
-                <img src="images/instagram.svg" alt="Ícone do Instagram">
-            </a>
-            <a href="https://www.facebook.com/asteceng" target="_blank" class="social-icon">
-                <img src="images/facebook.svg" alt="Ícone do Facebook">
-            </a>
-            <a href="https://api.whatsapp.com/send?phone=5561999827553" target="_blank" class="social-icon">
-                <img src="images/whatsapp.svg" alt="Ícone do WhatsApp">
-            </a>
-            <a href="https://www.youtube.com/@AstecEngenharia" target="_blank" class="social-icon">
-                <img src="images/youtube.svg" alt="Ícone do YouTube">
-            </a>
-        </section>
+          </div>
+          <div class="evento-field">
+            <label for="leadPhone">Seu WhatsApp</label>
+            <div class="evento-input evento-input--phone">
+              <span class="evento-phone-flag" aria-hidden="true">
+                <svg width="100%" height="100%" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true">
+                  <path fill="#73AF00"
+                    d="M473.655 88.275H38.345C17.167 88.275 0 105.442 0 126.62V385.38c0 21.177 17.167 38.345 38.345 38.345h435.31c21.177 0 38.345-17.167 38.345-38.345V126.62c0-21.178-17.167-38.345-38.345-38.345z" />
+                  <path fill="#FFE15A"
+                    d="M251.41 135.207L65.354 248.458c-5.651 3.439-5.651 11.641 0 15.081L251.41 376.792c2.819 1.716 6.36 1.716 9.18 0l186.056-113.252c5.651-3.439 5.651-11.641 0-15.081L260.59 135.207c-2.819-1.715-6.361-1.715-9.18 0z" />
+                  <circle fill="#41479B" cx="256" cy="255.999" r="70.62" />
+                  <path fill="#F5F5F5"
+                    d="M195.4 219.872c-3.332 5.578-5.905 11.64-7.605 18.077 39.149-2.946 97.062 8.006 133.922 43.773 2.406-6.141 3.995-12.683 4.59-19.522-38.06-22.033-90.679-33.424-130.907-32.328zM258.925 280.099l1.88 5.638 5.943.046c.769.006 1.088.988.469 1.445l-4.781 3.531 1.793 5.666c.232.734-.604 1.341-1.229.893l-4.835-3.456-4.835 3.456c-.626.447-1.461-.159-1.229-.893l1.793-5.666-4.781-3.531c-.619-.457-.3-1.439.469-1.445l5.943-.046 1.88-5.638c.264-.731 1.297-.731 1.563 0z" />
+                </svg>
+              </span>
+              <span class="evento-phone-ddi">+55</span>
+              <input type="tel" id="leadPhone" name="whatsapp" placeholder="DDD + número" inputmode="tel"
+                autocomplete="tel" required />
+            </div>
+          </div>
+          <button class="evento-form__submit" type="submit">assegurar minha vaga</button>
+        </form>
+      </div>
     </div>
-
-    <footer>
-        <p>ASTEC - ASSESSORIA TECNICA E ENGENHARIA CONSULTIVA LTDA<br>CNPJ: 57.724.224/0001-63</p>
-        <p>&copy; <span id="current-year"></span> Todos os direitos reservados.</p>
+    <div class="evento-modal" id="pdfModal" aria-hidden="true">
+      <div class="evento-modal__panel evento-modal__panel--pdf" role="dialog" aria-modal="true"
+        aria-labelledby="pdfModalTitle">
+        <button class="evento-modal__close" type="button" data-modal-close aria-label="Fechar modal">
+          ×
+        </button>
+        <h3 class="evento-modal__title" id="pdfModalTitle">Cronograma das Aulas</h3>
+        <div class="evento-modal__content">
+          <iframe src="cronograma-aulas.pdf" width="100%" height="100%" style="border: none;"></iframe>
+        </div>
+      </div>
+    </div>
+    <section class="evento-about-section">
+      <div class="evento-about__grid">
+        <div class="evento-about__image-wrapper">
+          <img src="images/camila-expert-aula.png"
+            alt="Camila Carvalho, engenheira civil especializada em vistorias de imóveis" class="evento-about__image" />
+        </div>
+        <div class="evento-about__content">
+          <h2 class="evento-about__title">Olá, eu sou a Camila!</h2>
+          <p class="evento-about__text">
+            Sou casada, mãe de um casalzinho lindo e atuo há <strong>mais de 17 anos</strong> com Engenharia Civil.
+            Nesse tempo todo acompanhei de perto o quanto uma entrega de chaves ou uma reforma mal conduzida pode virar
+            um pesadelo, seja pelo orçamento estourado, pelas falhas de execução ou pelos vícios de construção que
+            aparecem quando já é tarde demais.
+          </p>
+          <p class="evento-about__text">
+            Hoje, meu propósito é ajudar você — engenheiro, arquiteto ou comprador de imóveis — a se proteger, entregar
+            laudos impecáveis e transformar vistorias em um serviço premium, reconhecido e bem pago. Quero que você
+            tenha a tranquilidade de dormir sabendo que protegeu o imóvel, evitou prejuízos e valorizou o seu trabalho.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="evento-faq-section">
+      <div class="evento-faq-container">
+        <div class="evento-faq-heading">
+          <span class="evento-faq-badge">FAQ</span>
+          <h2 class="evento-faq-title">Perguntas Frequentes</h2>
+          <p class="evento-faq-description">
+            Tudo o que você precisa saber para garantir seu lugar e aproveitar a Formação Prática em Vistoria.
+          </p>
+        </div>
+        <div class="evento-faq-list">
+          <article class="evento-faq-item">
+            <button class="evento-faq-toggle" type="button" aria-expanded="false">
+              <span class="evento-faq-question">Para quem é a Formação Prática em Vistoria?</span>
+              <span class="evento-faq-icon">+</span>
+            </button>
+            <div class="evento-faq-content" role="region" aria-hidden="true">
+              <p class="evento-faq-answer">
+                Ideal para engenheiros, arquitetos e compradores de imóveis que desejam dominar vistorias de entrega de
+                chaves e faturar alto com esse serviço premium.
+              </p>
+            </div>
+          </article>
+          <article class="evento-faq-item">
+            <button class="evento-faq-toggle" type="button" aria-expanded="false">
+              <span class="evento-faq-question">O que está incluso no valor do ingresso?</span>
+              <span class="evento-faq-icon">+</span>
+            </button>
+            <div class="evento-faq-content" role="region" aria-hidden="true">
+              <p class="evento-faq-answer">
+                A aula ao vivo no dia 22/11 às 09h00, o template profissional de vistoria e todo o material da aula em
+                PDF. A gravação não será disponibilizada, mas poderá ser adquirida separadamente na página de pagamento.
+              </p>
+            </div>
+          </article>
+          <article class="evento-faq-item">
+            <button class="evento-faq-toggle" type="button" aria-expanded="false">
+              <span class="evento-faq-question">Preciso de experiência prévia?</span>
+              <span class="evento-faq-icon">+</span>
+            </button>
+            <div class="evento-faq-content" role="region" aria-hidden="true">
+              <p class="evento-faq-answer">
+                Não. O conteúdo é estruturado para quem está começando do zero e também para profissionais que querem
+                elevar o nível das suas entregas.
+              </p>
+            </div>
+          </article>
+          <article class="evento-faq-item">
+            <button class="evento-faq-toggle" type="button" aria-expanded="false">
+              <span class="evento-faq-question">Como receberei o template e o material?</span>
+              <span class="evento-faq-icon">+</span>
+            </button>
+            <div class="evento-faq-content" role="region" aria-hidden="true">
+              <p class="evento-faq-answer">
+                Assim que a aula terminar você receberá um e-mail com o link para baixar o template de laudo e o PDF com
+                os principais slides da apresentação.
+              </p>
+            </div>
+          </article>
+          <article class="evento-faq-item">
+            <button class="evento-faq-toggle" type="button" aria-expanded="false">
+              <span class="evento-faq-question">E se eu tiver dúvidas após a aula?</span>
+              <span class="evento-faq-icon">+</span>
+            </button>
+            <div class="evento-faq-content" role="region" aria-hidden="true">
+              <p class="evento-faq-answer">
+                Você poderá entrar em contato pelo suporte do evento para receber orientações adicionais e tirar dúvidas
+                pontuais sobre a aplicação da metodologia.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <footer class="evento-footer">
+      <p class="evento-footer__brand">ASTEC - ASSESSORIA TECNICA E ENGENHARIA CONSULTIVA LTDA</p>
+      <p class="evento-footer__cnpj">CNPJ: 57.724.224/0001-63</p>
+      <p class="evento-footer__rights">© 2025 Todos os direitos reservados.</p>
     </footer>
+  </main>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const hotmartUrl = "https://pay.hotmart.com/U103066618Y?checkoutMode=10";
+      const webhookUrl = "https://n8n-hook.aluanalara.com.br/webhook/camila-inscricao";
 
-    <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
+      const modal = document.getElementById("leadModal");
+      const leadForm = document.getElementById("leadForm");
+      const openModalTrigger = document.querySelector('[data-modal-open="lead"]');
+      const modalCloseTriggers = modal ? modal.querySelectorAll("[data-modal-close]") : [];
+      const submitButton = leadForm ? leadForm.querySelector(".evento-form__submit") : null;
+
+      const setModalVisibility = (visible) => {
+        if (!modal) return;
+        modal.setAttribute("aria-hidden", visible ? "false" : "true");
+        modal.classList.toggle("is-visible", visible);
+        document.body.classList.toggle("modal-open", visible);
+        if (!visible && leadForm) {
+          leadForm.reset();
+        }
+      };
+
+      const openModal = () => {
+        if (!modal) return;
+        setModalVisibility(true);
+        const firstInput = modal.querySelector("#leadName");
+        requestAnimationFrame(() => firstInput && firstInput.focus());
+      };
+
+      const closeModal = () => {
+        setModalVisibility(false);
+      };
+
+      openModalTrigger?.addEventListener("click", openModal);
+
+      modalCloseTriggers.forEach((trigger) =>
+        trigger.addEventListener("click", closeModal)
+      );
+
+      modal?.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
+
+      leadForm?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (!submitButton) return;
+
+        const formData = new FormData(leadForm);
+        const nome = (formData.get("nome") || "").toString().trim();
+        const email = (formData.get("email") || "").toString().trim();
+        const rawPhone = (formData.get("whatsapp") || "").toString();
+        let phoneDigits = rawPhone.replace(/\D/g, "");
+        if (phoneDigits.startsWith("55")) {
+          phoneDigits = phoneDigits.slice(2);
+        }
+        const whatsapp = `+55${phoneDigits}`;
+
+        if (!nome || !email || phoneDigits.length < 10) {
+          alert("Por favor, preencha todos os campos corretamente.");
+          return;
+        }
+
+        const payload = {
+          nome,
+          email,
+          whatsapp,
+        };
+
+        const originalLabel = submitButton.textContent;
+        submitButton.disabled = true;
+        submitButton.textContent = "Enviando...";
+
+        try {
+          await fetch(webhookUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          });
+        } catch (error) {
+          console.error("Erro ao enviar dados para o webhook", error);
+        } finally {
+          submitButton.textContent = originalLabel;
+          submitButton.disabled = false;
+          closeModal();
+          window.location.href = hotmartUrl;
+        }
+      });
+
+      const faqItems = document.querySelectorAll(".evento-faq-item");
+
+      faqItems.forEach((item) => {
+        const toggle = item.querySelector(".evento-faq-toggle");
+        const content = item.querySelector(".evento-faq-content");
+
+        const closeItem = () => {
+          item.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", "false");
+          content.setAttribute("aria-hidden", "true");
+          content.style.maxHeight = "0px";
+        };
+
+        const openItem = () => {
+          item.classList.add("is-open");
+          toggle.setAttribute("aria-expanded", "true");
+          content.setAttribute("aria-hidden", "false");
+          content.style.maxHeight = content.scrollHeight + "px";
+        };
+
+        toggle.addEventListener("click", () => {
+          const isOpen = item.classList.contains("is-open");
+          faqItems.forEach((otherItem) => {
+            if (otherItem !== item) {
+              const otherToggle = otherItem.querySelector(".evento-faq-toggle");
+              const otherContent = otherItem.querySelector(".evento-faq-content");
+              otherItem.classList.remove("is-open");
+              otherToggle.setAttribute("aria-expanded", "false");
+              otherContent.setAttribute("aria-hidden", "true");
+              otherContent.style.maxHeight = "0px";
+            }
+          });
+
+          if (isOpen) {
+            closeItem();
+          } else {
+            openItem();
+          }
+        });
+
+        // Initialize closed state heights
+        content.style.maxHeight = "0px";
+        content.setAttribute("aria-hidden", "true");
+      });
+
+
+      // PDF Modal Logic
+      const pdfModal = document.getElementById("pdfModal");
+      const openPdfTrigger = document.querySelector('[data-modal-open="pdf"]');
+      const pdfModalCloseTriggers = pdfModal ? pdfModal.querySelectorAll("[data-modal-close]") : [];
+
+      const setPdfModalVisibility = (visible) => {
+        if (!pdfModal) return;
+        pdfModal.setAttribute("aria-hidden", visible ? "false" : "true");
+        pdfModal.classList.toggle("is-visible", visible);
+        document.body.classList.toggle("modal-open", visible);
+      };
+
+      openPdfTrigger?.addEventListener("click", () => {
+        setPdfModalVisibility(true);
+      });
+
+      pdfModalCloseTriggers.forEach((trigger) =>
+        trigger.addEventListener("click", () => setPdfModalVisibility(false))
+      );
+
+      pdfModal?.addEventListener("click", (event) => {
+        if (event.target === pdfModal) {
+          setPdfModalVisibility(false);
+        }
+      });
+    });
+  </script>
 </body>
+
 </html>
